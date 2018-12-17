@@ -5,9 +5,6 @@
 CREATE SCHEMA nog AUTHORIZATION "openId3as";
 COMMENT ON SCHEMA nog IS 'NOG is the core of non-government organization divulgation';
 
-CREATE SCHEMA "log" AUTHORIZATION "openId3as";
-COMMENT ON SCHEMA "log" IS 'LOG is used to store logs of NOG application';
-
 --nog.institution
 CREATE TABLE nog.institution
 (
@@ -171,15 +168,17 @@ WITH (
   OIDS=FALSE
 );
 
---log.log
-CREATE TABLE "log"."log"
+--nog.user
+CREATE TABLE nog.user 
 (
-  in_id bigserial NOT NULL,
-  in_event_id int,
-  st_log_level varchar(50) NOT NULL,
-  st_message varchar(4000) NOT NULL,
-  ts_created timestamp with time zone NOT NULL DEFAULT now(), -- Record creation time log
-  CONSTRAINT pk_log PRIMARY KEY (in_id)
+	in_id bigint NOT NULL,
+	st_login varchar(50) UNIQUE NOT NULL,
+	st_password varchar(50) NOT NULL,
+	st_name varchar(100) NOT NULL,
+	st_email varchar(100) NOT NULL,
+	bl_active boolean NOT NULL DEFAULT true,
+	bl_first_access boolean NOT NULL DEFAULT false,
+	CONSTRAINT pk_user PRIMARY KEY (in_id)
 )
 WITH (
   OIDS=FALSE
