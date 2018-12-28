@@ -171,13 +171,16 @@ WITH (
 --nog.user
 CREATE TABLE nog.user 
 (
-	in_id bigint NOT NULL,
+	in_id bigserial NOT NULL,
 	st_login varchar(50) UNIQUE NOT NULL,
 	st_password varchar(50) NOT NULL,
-	st_name varchar(100) NOT NULL,
+	st_first_name varchar(100) NOT NULL,
+  st_last_name varchar(100) NOT NULL,
 	st_email varchar(100) NOT NULL,
-	bl_active boolean NOT NULL DEFAULT true,
 	bl_first_access boolean NOT NULL DEFAULT false,
+  ts_created timestamp with time zone NOT NULL DEFAULT now(), -- Record creation time log
+  ts_updated timestamp with time zone, -- Record update time log
+  bo_active boolean NOT NULL DEFAULT true,
 	CONSTRAINT pk_user PRIMARY KEY (in_id)
 )
 WITH (
