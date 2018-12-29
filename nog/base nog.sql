@@ -177,7 +177,7 @@ CREATE TABLE nog.user
 	st_first_name varchar(100) NOT NULL,
   st_last_name varchar(100) NOT NULL,
 	st_email varchar(100) NOT NULL,
-	bl_first_access boolean NOT NULL DEFAULT false,
+	bo_first_access boolean NOT NULL DEFAULT false,
   ts_created timestamp with time zone NOT NULL DEFAULT now(), -- Record creation time log
   ts_updated timestamp with time zone, -- Record update time log
   bo_active boolean NOT NULL DEFAULT true,
