@@ -152,7 +152,7 @@ WITH (
   OIDS=FALSE
 );
 
---nog.collaborator_phone
+--nog.volunteer_phone
 CREATE TABLE nog.volunteer_phone
 (
   in_id bigserial NOT NULL,
